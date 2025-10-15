@@ -101,7 +101,8 @@ VS Code/GitHub Copilot supports custom slash commands as prompt files.
 
 ## Available Commands
 
-Browse the `commands/` directory to see all available commands. Each command is documented in its own markdown file.
+- **`gh-pr-blockers`** - Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck)
+- **`jira-comment-blockers`** - Search through current sprint work items for blockers raised in Jira comments
 
 ## Contributing
 
