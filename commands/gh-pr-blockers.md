@@ -2,6 +2,7 @@ Summarize pull request blockers across accessible repositories, unless a repo is
 
 ## Workflow
 
+Follow these instructions explicitly:
 1. If a specific repository is provided in $ARGUMENTS (format: owner/repo), use `gh pr list --repo owner/repo --state open --limit 50 --json number,title,author,updatedAt,isDraft` to list PRs
 2. Otherwise, use `gh search prs --involves @me --state open --json number,title,repository,author,updatedAt` to find PRs involving the authenticated user across all repositories
 3. For each PR found, use `gh pr view <number> --repo owner/repo --json number,title,author,updatedAt,state,isDraft,mergeable,reviewDecision,statusCheckRollup,reviewRequests,comments,reviews,url` to fetch detailed status including checks, reviews, mergeable state, review conversations, and PR URL
@@ -24,3 +25,9 @@ Check for these common blockers:
 ## Output
 
 Report **only blocked PRs** (do not include unblocked PRs in the summary). For each blocked PR (ordered by most recent activity first): repository name, PR number, PR URL, title, author, last activity timestamp, and **concise blocker summary** (e.g., "Blocked by: failed CI, missing reviews (2 requested)", "Blocked by: changes requested by @username", "Blocked by: missing reviews from @reviewer1, @reviewer2")
+
+## Dependencies
+
+If this prompt errors on missing commands, provide the user with the links below:
+- Atlassian CLI (acli): https://developer.atlassian.com/cloud/acli/guides/install-acli/
+- GitHub CLI (gh): https://cli.github.com/
