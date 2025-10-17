@@ -7,7 +7,8 @@ Follow these instructions explicitly:
 2. Otherwise, use `acli jira workitem search --json --jql "sprint IN openSprints() and status != Done ORDER BY updated ASC" --fields "summary" --limit 50` to find work items in the current sprint that aren't done
 3. For each work item found, use `acli jira workitem comment list --key {KEY}` to fetch all comments on the work item
 4. Analyze each work item's comments for mentions of blockers
-6. Report all blocked work items with concise blocker summaries
+6. Use `acli jira auth status` to get the "Site" value, which will be used to generate URLs later (to fill in {jira_site})
+7. Report all blocked work items with concise blocker summaries
 
 ## Blocker Detection
 
@@ -17,11 +18,11 @@ Check for these common blocker indicators in comments:
 - **Technical blockers** - Infrastructure issues, environment problems, access issues
 - **Resource blockers** - Waiting for design, waiting for requirements, waiting for product management, waiting for approval
 - **Third-party blockers** - Vendor delays, API issues, external service problems
-- **Review blockers** - Waiting for code review, waiting for QA, waiting for stakeholder approval
+- **Review blockers** - Waiting on any sort of review, e.g. waiting for code review, waiting for QA, waiting for stakeholder approval
 
 ## Output
 
-Report **only blocked work items** (do not include unblocked items in the summary). For each blocked item: work item key, summary, and **concise blocker summary** extracted from comments (e.g., "Blocked by: waiting on API access from Platform team", "Blocked by: infrastructure issues in staging environment", "Blocked by: pending design approval from Product")
+Report **only blocked work items** (do not include unblocked items in the summary). For each blocked item: work item key, summary, URL (generated using format: `https://{jira_site}/browse/{key}`) and **concise blocker summary** extracted from comments (e.g., "Blocked by: waiting on API access from Platform team", "Blocked by: infrastructure issues in staging environment", "Blocked by: pending design approval from Product")
 
 ## Dependencies
 
