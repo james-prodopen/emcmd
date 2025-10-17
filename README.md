@@ -2,6 +2,12 @@
 
 A collection of slash commands to help engineering managers automate common workflows.
 
+## Available Commands
+
+- **`gh-jira-1on1-prep`** - Prepare for 1-on-1 meetings by reviewing a developer's recent Jira work items and GitHub PRs
+- **`gh-pr-blockers`** - Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck)
+- **`jira-comment-blockers`** - Search through current sprint work items for blockers raised in Jira comments
+
 ## Installation
 
 ### For Claude Code
@@ -98,12 +104,6 @@ VS Code/GitHub Copilot supports custom slash commands as prompt files.
 3. Copy the content from the corresponding command file in this repository's `commands/` folder into your new `.prompt.md` file
 
 4. Use the prompt by typing `/` followed by the filename in Copilot Chat (e.g., `/gh-pr-blockers`)
-
-## Available Commands
-
-- **`gh-pr-blockers`** - Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck)
-- **`jira-comment-blockers`** - Search through current sprint work items for blockers raised in Jira comments
-- **`gh-jira-1on1-prep`** - Prepare for 1-on-1 meetings by reviewing a developer's recent Jira work items and GitHub PRs
 
 ## Contributing
 
