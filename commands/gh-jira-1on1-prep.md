@@ -8,7 +8,8 @@ Follow these instructions explicitly:
 3. For each work item, use `acli jira workitem view {key}` to fetch detailed information including description, comments, and status
 4. Use `gh search prs --author {GH_USERNAME} --updated ">={today - 14 days}" --json number,repository --limit 50` to find their recent PRs from the last 2 weeks
 5. For each PR, use `gh pr view {number} --repo {owner/repo} --json number,title,author,updatedAt,state,isDraft,mergeable,reviewDecision,statusCheckRollup,reviewRequests,comments,reviews,url` to get detailed PR information
-6. Organize and summarize the information for the 1-on-1 meeting
+6. Use `acli jira auth status` to get the "Site" value, which will be used to generate URLs later (to fill in {jira_site})
+7. Organize and summarize the information for the 1-on-1 meeting
 
 ## Analysis
 
@@ -24,7 +25,8 @@ Provide insights on:
 
 Organize the output into sections, remembering the following best practices:
 - provide specific examples for any points made
-- always providing the key (for Jira work items) or URL (for GitHub pull requests)
+- always provide URLs for Jira work items using the format: `https://{jira_site}/browse/{key}`
+- always provide URLs for GitHub pull requests
 
 ### Recently Completed (Last 2 Weeks)
 List resolved work items with keys, titles, and resolution dates
