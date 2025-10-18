@@ -13,7 +13,8 @@ Follow these instructions explicitly:
 4. Did you output a working table in step 3? If not, go back to step 3 and output a working table - DO NOT proceed unless that has been completed
 5. Analyze all work item PAIRS in the previously created working table to identify potential duplicates based on similar summary text
     - when analyzing, consider only a single row at a time to avoid finding work item pairs that both have status.name = "Done"
-6. For each potential duplicate pair, use `acli jira workitem link list --key "{key}"` on either one of the work items to check if they are already linked to each other
+6. For each potential duplicate pair, use `acli jira workitem link list --key "{key}" --json` on BOTH of the work items to check if they are already linked to each other
+    - you need to check both work items because that acli command supports "duplicates" but not "is duplicated by" relationships
 7. If the pair of work items is not already linked, use `acli jira workitem view "{key}" --fields "issuetype,summary,description"` for both work items to review them in additional detail and increase confidence that they are duplicates
 8. For each pair of work items that are duplicates, generate URLs for each work item using the format: `https://{site}/browse/{key}`
 
