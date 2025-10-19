@@ -29,10 +29,10 @@ For each work item (x) that has external dependencies (y), provide:
 
 **External Dependencies**
 
-**"{site_url}/{x_key}" - {x_summary}:**
+**"{site_url}/browse/{x_key}" - {x_summary}:**
 (for each dependency, y):
 \n
-→ "is blocked by {site_url}/{x_key}"
+→ "is blocked by {site_url}/browse/{x_key}"
   Brief natural language summary of the response from `mcp__atlassian__getJiraIssue` tool call
     - be sure to note status, created and last updated
     - never include times in dates
