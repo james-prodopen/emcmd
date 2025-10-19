@@ -8,6 +8,7 @@ A collection of slash commands to help engineering managers automate common work
 - **`gh-pr-blockers`** - Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck)
 - **`jira-comment-blockers`** - Search through current sprint work items for blockers raised in Jira comments
 - **`jira-duplicate-bugs`** - Find potential duplicate bugs in a Jira project that aren't already linked
+- **`jira-external-dependencies`** - Identify work items in a Jira project that are blocked by external dependencies
 
 ## Installation
 
