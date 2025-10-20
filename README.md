@@ -4,13 +4,13 @@ A collection of slash commands to help engineering managers automate common work
 
 ## Available Commands
 
-| Command | Summary | Dependencies |
-|---------|---------|--------------|
-| `gh-jira-1on1-prep` | Prepare for 1-on-1 meetings by reviewing a developer's recent Jira work items and GitHub PRs | [GitHub CLI](https://cli.github.com/), [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) |
-| `gh-pr-blockers` | Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck) | [GitHub CLI](https://cli.github.com/) |
-| `jira-comment-blockers` | Search through current sprint work items for blockers raised in Jira comments | [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) |
-| `jira-duplicate-bugs` | Find potential duplicate bugs in a Jira project that aren't already linked | [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) |
-| `jira-external-dependencies` | Identify work items in a Jira project that are blocked by external dependencies | [Atlassian Rovo MCP](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/) |
+| Command | Summary | Dependencies | Notes |
+|---------|---------|--------------|-------|
+| `gh-jira-1on1-prep` | Prepare for 1-on-1 meetings by reviewing a developer's recent Jira work items and GitHub PRs | [GitHub CLI](https://cli.github.com/), [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) | Uses Atlassian CLI because of [MCP issue](https://github.com/anthropics/claude-code/issues/9133) |
+| `gh-pr-blockers` | Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck) | [GitHub CLI](https://cli.github.com/) | |
+| `jira-comment-blockers` | Search through current sprint work items for blockers raised in Jira comments | [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) | Uses CLI because of [MCP issue](https://github.com/anthropics/claude-code/issues/9133) |
+| `jira-duplicate-bugs` | Find potential duplicate bugs in a Jira project that aren't already linked | [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) | Uses CLI because of [MCP issue](https://github.com/anthropics/claude-code/issues/9133) |
+| `jira-external-dependencies` | Identify work items in a Jira project that are blocked by external dependencies | [Atlassian Rovo MCP](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/) | Uses MCP because getting inward issue links unsupported via CLI |
 
 ## Installation
 
