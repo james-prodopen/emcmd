@@ -1,14 +1,37 @@
-Generate a functional changelog entry for the last pull request merged into main by analyzing the actual code changes. Optionally specify a repository here: $ARGUMENTS.
+Generate functional changelog entries for pull requests merged into main by analyzing actual code changes. Arguments: $ARGUMENTS
+
+## Arguments
+
+Arguments can be provided in any order, space-separated:
+- **Repository** (optional): Format `owner/repo` - If omitted, searches across all accessible repos
+- **Count** (optional): Number of PRs to process - Default is 10, use a number like `5` or `20`
+- **Author** (optional): Filter by author - Use `@username` format (e.g., `@octocat`)
+
+**Examples:**
+- No arguments: Process 10 most recent PRs across all repos, all authors
+- `owner/repo`: Process 10 most recent PRs in specified repo, all authors
+- `20`: Process 20 most recent PRs across all repos, all authors
+- `@username`: Process 10 most recent PRs by specific author across all repos
+- `owner/repo 5`: Process 5 most recent PRs in specified repo, all authors
+- `owner/repo @username`: Process 10 most recent PRs by specific author in specified repo
+- `20 @username`: Process 20 most recent PRs by specific author across all repos
+- `owner/repo 5 @username`: Process 5 most recent PRs by specific author in specified repo
 
 ## Workflow
 
 Follow these instructions explicitly:
-1. If a specific repository is provided in $ARGUMENTS (format: owner/repo), use `gh pr list --repo owner/repo --base main --state merged --limit 1 --json number,title,author,mergedAt,url,repository` to find the last merged PR
-2. Otherwise, use `gh search prs --involves @me --base main --state merged --sort updated --order desc --limit 1 --json number,title,repository,author,mergedAt,url` to find the last PR merged into main across all repositories
-3. For the PR found, use `gh pr view <number> --repo owner/repo --json number,title,body,author,mergedAt,mergedBy,url,additions,deletions,changedFiles,files,labels` to fetch complete PR details including the list of changed files
-4. Use `gh pr diff <number> --repo owner/repo` to get the full code diff/patch for the PR
+1. Parse $ARGUMENTS to extract repository, count (default: 10), and author filter:
+   - Repository: matches pattern `owner/repo` (contains `/`)
+   - Count: matches a number (e.g., `5`, `10`, `20`)
+   - Author: starts with `@` (e.g., `@username`)
+2. Build the appropriate `gh` command based on arguments:
+   - If repository is specified: `gh pr list --repo owner/repo --base main --state merged --limit <count> [--author <username>] --json number,title,author,mergedAt,url,repository`
+   - Otherwise: `gh search prs --base main --state merged --sort updated --order desc --limit <count> [--author <username>] --json number,title,repository,author,mergedAt,url`
+3. For each PR found, use `gh pr view <number> --repo owner/repo --json number,title,body,author,mergedAt,mergedBy,url,additions,deletions,changedFiles,files,labels` to fetch complete PR details
+4. For each PR, use `gh pr diff <number> --repo owner/repo` to get the full code diff/patch
 5. Analyze the code changes to understand what functionality was added, modified, or removed
-6. Generate a functional changelog entry based on the analysis
+6. Generate a functional changelog entry for each PR based on the analysis
+7. Present all changelog entries in chronological order (most recent first)
 
 ## Analysis Instructions
 
@@ -87,12 +110,15 @@ Create a functional changelog entry with the following structure:
 
 ## Output Requirements
 
+- Generate a changelog entry for each PR in the result set
+- Present entries in chronological order (most recent first)
 - Only include sections that have relevant changes (omit empty sections)
 - Focus on WHAT changed functionally, not just HOW it changed in code
 - Write descriptions that are meaningful to users/developers reading the changelog
 - Use the PR description and commit messages as context, but base the changelog on actual code analysis
 - Present the changelog as clean, formatted markdown suitable for copying into a CHANGELOG.md file
-- If no PR is found, provide a clear message indicating that no merged PRs were found for the specified criteria
+- If no PRs are found, provide a clear message indicating that no merged PRs were found for the specified criteria
+- Add a separator line (`---`) between each PR entry for readability
 
 ## Dependencies
 
