@@ -24,30 +24,31 @@ Follow these instructions explicitly:
    - Repository: matches pattern `owner/repo` (contains `/`)
    - Days: matches a number (e.g., `3`, `7`, `14`, `30`)
    - Author: starts with `@` (e.g., `@username`)
-2. Calculate the date N days ago from today in YYYY-MM-DD format (today's date is available in the environment)
-3. Build the appropriate `gh` command based on arguments:
-   - If repository is specified: `gh pr list --repo owner/repo --search "base:main merged:>=YYYY-MM-DD [author:username]" --state merged --json number,title,author,mergedAt,url,repository`
-   - Otherwise: `gh search prs "base:main is:merged merged:>=YYYY-MM-DD [author:username]" --sort updated --order desc --json number,title,repository,author,mergedAt,url`
-4. For each PR found, use `gh pr view <number> --repo owner/repo --json number,title,body,author,mergedAt,mergedBy,url,additions,deletions,changedFiles,files,labels` to fetch complete PR details
-5. For each PR, use `gh pr diff <number> --repo owner/repo` to get the full code diff/patch
-6. **IMPORTANT - Read full files for context:**
+2. Build the appropriate `gh` command based on arguments:
+   - If repository is specified: `gh pr list --repo owner/repo --search "base:main merged:>={today - N days} [author:username]" --state merged --json number,title,author,mergedAt,url,repository`
+   - Otherwise: `gh search prs "base:main is:merged merged:>={today - N days} [author:username]" --sort updated --order desc --json number,title,repository,author,mergedAt,url`
+   - Replace `N` with the number of days from step 1 (e.g., `7`, `14`, `30`)
+   - Replace `[author:username]` with the author filter if provided, otherwise omit it
+3. For each PR found, use `gh pr view <number> --repo owner/repo --json number,title,body,author,mergedAt,mergedBy,url,additions,deletions,changedFiles,files,labels` to fetch complete PR details
+4. For each PR, use `gh pr diff <number> --repo owner/repo` to get the full code diff/patch
+5. **IMPORTANT - Read full files for context:**
    - Clone or fetch the repository if not already available locally
-   - For EACH file that was changed in the PR (identified from the files list in step 4), read the ENTIRE file in its current state (after the PR was merged)
+   - For EACH file that was changed in the PR (identified from the files list in step 3), read the ENTIRE file in its current state (after the PR was merged)
    - Do NOT rely solely on the diff - read the complete files to understand the full context of changes
    - If the changes reference or interact with other files (imports, function calls, etc.), read those related files as well for additional context
    - Use the Read tool to read these files - this gives you the complete picture of what the code does
-7. Analyze the code changes to understand what functionality was added, modified, or removed:
+6. Analyze the code changes to understand what functionality was added, modified, or removed:
    - Use the diff to identify what changed
    - Use the full file contents to understand the context and purpose of those changes
    - Use related files to understand how the changes integrate with the rest of the codebase
-8. Generate a functional changelog entry for each PR based on the comprehensive analysis
-9. Present all changelog entries in chronological order (most recent first)
+7. Generate a functional changelog entry for each PR based on the comprehensive analysis
+8. Present all changelog entries in chronological order (most recent first)
 
 ## Analysis Instructions
 
 **CRITICAL: Read full files, not just diffs!** You MUST read the complete contents of changed files and related files to generate accurate, functional changelog entries. The diff alone does not provide enough context to understand what the code actually does.
 
-For each PR, after reading the full files as instructed in step 6, carefully analyze to identify and categorize changes:
+For each PR, after reading the full files as instructed in step 5, carefully analyze to identify and categorize changes:
 
 **Features** - New functionality, capabilities, or enhancements
 - Look for new functions, classes, modules, or API endpoints (read the full implementation to understand what they do)
