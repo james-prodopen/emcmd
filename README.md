@@ -4,14 +4,14 @@ A collection of slash commands to help engineering managers automate common work
 
 ## Available Commands
 
-### GitHub Commands
+### GitHub
 
 | Command | Summary | Dependencies | Notes |
 |---------|---------|--------------|-------|
 | `gh-pr-changelog` | Generate changelog entries for PRs merged into main | [GitHub CLI](https://cli.github.com/) | |
 | `gh-pr-blockers` | Identify PRs that appear blocked: both explicitly (e.g. on review) and implicitly (e.g. author is stuck) | [GitHub CLI](https://cli.github.com/) | |
 
-### Jira Commands
+### Jira
 
 | Command | Summary | Dependencies | Notes |
 |---------|---------|--------------|-------|
@@ -19,7 +19,7 @@ A collection of slash commands to help engineering managers automate common work
 | `jira-duplicate-bugs` | Find potential duplicate bugs in a Jira project that aren't already linked | [Atlassian CLI](https://developer.atlassian.com/cloud/acli/guides/install-acli/) | Uses CLI because of [MCP issue](https://github.com/anthropics/claude-code/issues/9133) |
 | `jira-external-dependencies` | Identify work items in a Jira project that are blocked by external dependencies | [Atlassian Rovo MCP](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/) | Uses MCP because getting inward issue links unsupported via CLI |
 
-### Cross-Tool Commands
+### Cross-Tool
 
 | Command | Summary | Dependencies | Notes |
 |---------|---------|--------------|-------|
