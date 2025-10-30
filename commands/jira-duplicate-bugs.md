@@ -1,4 +1,4 @@
-Find potential duplicate work items in a Jira project. Provide PROJECT_KEY here: $ARGUMENTS.
+Find potential duplicate bugs in a Jira project. Provide PROJECT_KEY here: $ARGUMENTS.
 
 ## Workflow
 
