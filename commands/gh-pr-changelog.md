@@ -7,12 +7,6 @@ Arguments must be provided in order, space-separated:
 2. **Days** (optional): Number of days back to search for PRs - Default is 7, use a number like `3`, `14`, or `30`
 3. **Author** (optional): Filter by author - GitHub username
 
-**Examples:**
-- `owner/repo`: Process PRs from last 7 days in specified repo, all authors
-- `owner/repo 3`: Process PRs from last 3 days in specified repo, all authors
-- `owner/repo 7 username`: Process PRs from last 7 days by specific author in specified repo
-- `owner/repo 14 username`: Process PRs from last 14 days by specific author in specified repo
-
 ## Workflow
 
 Follow these instructions explicitly:
