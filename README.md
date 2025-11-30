@@ -104,7 +104,7 @@ To avoid repeated approvals, you can allowlist specific CLI commands/MCP tools i
 
 2. Set **Auto-Run Mode** to **Use Allowlist**.
 
-3. Add commmands or MCP tools to **Command Allowlist** or **MCP Allowlist**, respectively.
+3. Add commands or MCP tools to **Command Allowlist** or **MCP Allowlist**, respectively.
 
 For example, to allowlist GitHub CLI commands used by `gh-pr-blockers.md`, add `gh pr list`, `gh search prs` and `gh pr view` to the **Command Allowlist**.
 

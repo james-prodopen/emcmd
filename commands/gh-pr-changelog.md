@@ -90,11 +90,11 @@ Create a concise changelog entry with the following structure - and absolutely n
 ## Best Practices
 
 - Never add `--limit` flag to a CLI command on your own, as this could limit the PRs the user sees in the changelog and be very confusing
-   - If there appear to be any issues with the volume of data retured by CLI calls, notify the user and ask whether it is acceptable to attempt to add the `--limit` flag to the specific command
+   - If there appear to be any issues with the volume of data returned by CLI calls, notify the user and ask whether it is acceptable to attempt to add the `--limit` flag to the specific command
    - Only consider adding a `--limit` flag to the `gh pr list` and `gh search prs` commands
 - The Changelog is the only output
 
 ## Dependencies
 
-If this prompt errors on missing CLI ommands, provide the user with the link below:
+If this prompt errors on missing CLI commands, provide the user with the link below:
 - GitHub CLI (gh): https://cli.github.com/

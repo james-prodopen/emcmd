@@ -29,5 +29,4 @@ Report **only blocked PRs** (do not include unblocked PRs in the summary). For e
 ## Dependencies
 
 If this prompt errors on missing commands, provide the user with the links below:
-- Atlassian CLI (acli): https://developer.atlassian.com/cloud/acli/guides/install-acli/
 - GitHub CLI (gh): https://cli.github.com/

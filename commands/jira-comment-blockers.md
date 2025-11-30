@@ -7,8 +7,8 @@ Follow these instructions explicitly:
 2. Otherwise, use `acli jira workitem search --json --jql "sprint IN openSprints() and status != Done ORDER BY updated ASC" --fields "summary" --limit 50` to find work items in the current sprint that aren't done
 3. For each work item found, use `acli jira workitem comment list --key {KEY}` to fetch all comments on the work item
 4. Analyze each work item's comments for mentions of blockers
-6. Use `acli jira auth status` to get the "Site" value, which will be used to generate URLs later (to fill in {jira_site})
-7. Report all blocked work items with concise blocker summaries
+5. Use `acli jira auth status` to get the "Site" value, which will be used to generate URLs later (to fill in {jira_site})
+6. Report all blocked work items with concise blocker summaries
 
 ## Blocker Detection
 
